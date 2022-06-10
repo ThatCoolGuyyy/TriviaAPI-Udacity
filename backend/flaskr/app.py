@@ -107,13 +107,11 @@ def create_app(test_config=None):
         questions = Question.query.filter(Category.id ==  id).all()
         current_questions = paginate_questions(request, questions)
         get_categories = Category.query.get(id)
-        category = Category.query.all()
         return jsonify({
             'success': True,
             'questions': current_questions,
             'total_questions': len(questions),
             'current_category': get_categories.type,
-            # 'categories': {category.id: category.type for category in category}
             }), 200
 
     @app.errorhandler(404)
@@ -148,6 +146,13 @@ def create_app(test_config=None):
             "message": "method not allowed"
         }), 405
     
+    @app.errorhandler(500)
+    def internal_server_error(error):
+        return jsonify({
+            "success": False,
+            "error": 500,
+            "message": "internal server error"
+        }), 500
     """
     @TODO:
     Create a GET endpoint to get questions based on category.
