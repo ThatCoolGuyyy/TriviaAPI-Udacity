@@ -23,8 +23,6 @@ First thing to do is to startup your virtual environment and once that is up and
 
 `pip install -r requirements.txt`
 
-We started the full stack application for you. It is designed with some key functional areas:
-
 # API Reference
 
 ## Error Handling
