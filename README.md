@@ -16,9 +16,11 @@ Dependencies for this project include pip, Python, Npm and Node.js.
 Find and download Node and Npm using this [link](./https://nodejs.com/en/download).
 
 This project uses Npm to manage software dependencies. Npm Relies on the package.json file located in the frontend directory of this repository.
+
 `npm install`
 ### Backend Dependencies
 First thing to do is to startup your virtual environment and once that is up and running, navigate to the backend directory and run the following command:
+
 `pip install -r requirements.txt`
 
 We started the full stack application for you. It is designed with some key functional areas:
