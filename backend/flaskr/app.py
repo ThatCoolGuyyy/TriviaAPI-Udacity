@@ -86,8 +86,8 @@ def create_app(test_config=None):
                 'success': True,
                 'created': question.id,
     
-            }), 200
-        except Exception as error:
+            })
+        except:
             abort(422)
             
 
