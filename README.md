@@ -44,7 +44,7 @@ The API returns 5 types of errors:
 - 422: unprocessable
 - 500: internal server error
 ## Endpoints
-#### GET'/categories'
+#### GET '/categories'
 - This endpoint fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 - Example `curl http://127.0.0.1:5000/categories`
 ```
@@ -60,9 +60,9 @@ The API returns 5 types of errors:
     "success": true
 }
 ```
-#### GET'/questions'
--This endpoint fetches all the questions in the database with a pagination of 10 questions per page.
--Example `curl http://127.0.0.1:5000/questions`
+#### GET '/questions'
+- This endpoint fetches all the questions in the database with a pagination of 10 questions per page.
+- Example `curl http://127.0.0.1:5000/questions`
 ```
 {
     "categories": {
@@ -149,7 +149,7 @@ The API returns 5 types of errors:
     "total_questions": 18
 }
 ```
-#### GET'/categories/<int:id>/questions'
+#### GET '/categories/<int:id>/questions'
 - This endpoint gets questions by category id using url parameters and returns a JSON object. It also returns the total number of questions in the category.
 - Example `curl http://127.0.0.1:5000/categories/2/questions`
 ```
@@ -189,7 +189,7 @@ The API returns 5 types of errors:
     "total_questions": 4
 }
 ```
-#### DELETE'/questions/<int:id>'
+#### DELETE '/questions/<int:id>'
 - This endpoint deletes a question with the matching id, it also returns the ID of the question that was deleted upon successful deletion.
 - Example `curl -X DELETE http://127.0.0.1:5000/questions/2`
 ```
@@ -198,7 +198,7 @@ The API returns 5 types of errors:
     "success": true
 }
 ```
-#### POST'/questions'
+#### POST '/questions'
 - This endpoint creates a new question and returns the ID of the question that was created upon successful creation.
 - Example `curl -X POST -H "Content-Type: application/json" -d '{"question": "Who invented the electricity?", "answer": "Benjamin Franklin", "category": "4", "difficulty": "3"}' http://127.0.0.1:5000/questions`
 ```
