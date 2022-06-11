@@ -234,8 +234,9 @@ The API returns 5 types of errors:
 ```
 #### POST '/quizzes'
 - This endpoint creates a new quiz and returns the ID of the quiz that was created upon successful creation.
-- Example `curl -X POST -H "Content-Type: application/json" -d '{"previous_questions": [6, 4], "quiz_category": {"type": "History", "id": "2"}}' http://127.0.0.1:5000/
+- Example `curl -X POST -H "Content-Type: application/json" -d '{"previous_questions": [6, 4], "quiz_category": {"type": "History", "id": "2"}}' http://127.0.0.1:5000/quizzes`
+```
 
 ## Author and Acknowledgements
--Oshungboye Oluwadamilola authored the API (app.py), test suite (test_flaskr.py), and this README.
+- Oshungboye Oluwadamilola authored the API (app.py), test suite (test_flaskr.py), and this README.
 All other project files, including the models and frontend, were created by Udacity as a project template for the Full Stack Web Developer Nanodegree.
