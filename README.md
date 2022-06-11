@@ -37,7 +37,7 @@ Errors are returned in the folowing JSON format:
 The API returns 5 types of errors:
 
 - 400: bad request
-- 404: not found
+- 404: resource not found
 - 405: method not allowed
 - 422: unprocessable
 - 500: internal server error
