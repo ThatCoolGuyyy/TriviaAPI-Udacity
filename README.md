@@ -34,6 +34,13 @@ Errors are returned in the folowing JSON format:
     "success": false
 }
 ```
+The API returns 5 types of errors:
+
+-400: bad request
+-404: not found
+-405: method not allowed
+-422: unprocessable
+-500: internal server error
 ## Endpoints
 #### GET'/categories'
 - This endpoint fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
@@ -53,7 +60,7 @@ Errors are returned in the folowing JSON format:
 ```
 #### GET'/questions'
 -This endpoint fetches all the questions in the database with a pagination of 10 questions per page.
--Example `curl http://127.0.0.1:5000/questions
+-Example `curl http://127.0.0.1:5000/questions`
 ```
 {
     "categories": {
@@ -200,4 +207,35 @@ Errors are returned in the folowing JSON format:
 ```
 #### POST '/questions/search'
 - This endpoint searches for questions based on the search term and returns a JSON object.
-- Example `curl -X POST -H "Content-Type: application/json" -d '{"searchTerm": "art"}' http://http://127.0.0.1:5000/questions/search`
+- Example `curl -X POST -H "Content-Type: application/json" -d '{"searchTerm": "Butter"}' http://http://127.0.0.1:5000/questions/search`
+
+```
+{
+    "categories": {
+        "1": "Science",
+        "2": "Art",
+        "3": "Geography",
+        "4": "History",
+        "5": "Entertainment",
+        "6": "Sports"
+    },
+    "questions": [
+        {
+            "answer": "George Washington Carver",
+            "category": 4,
+            "difficulty": 2,
+            "id": 12,
+            "question": "Who invented Peanut Butter?"
+        }
+    ],
+    "success": true,
+    "total_questions": 1
+}
+```
+#### POST '/quizzes'
+- This endpoint creates a new quiz and returns the ID of the quiz that was created upon successful creation.
+- Example `curl -X POST -H "Content-Type: application/json" -d '{"previous_questions": [6, 4], "quiz_category": {"type": "History", "id": "2"}}' http://127.0.0.1:5000/
+
+## Author and Acknowledgements
+-Oshungboye Oluwadamilola authored the API (app.py), test suite (test_flaskr.py), and this README.
+All other project files, including the models and frontend, were created by Udacity as a project template for the Full Stack Web Developer Nanodegree.
