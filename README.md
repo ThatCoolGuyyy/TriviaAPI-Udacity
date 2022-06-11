@@ -234,7 +234,19 @@ The API returns 5 types of errors:
 ```
 #### POST '/quizzes'
 - This endpoint creates a new quiz and returns the ID of the quiz that was created upon successful creation.
-- Example `curl -X POST -H "Content-Type: application/json" -d '{"previous_questions": [6, 4], "quiz_category": {"type": "History", "id": "2"}}' http://127.0.0.1:5000/quizzes`
+- Example: `curl -X POST -H "Content-Type: application/json" -d '{"previous_questions": [7, 8], "quiz_category": {"type": "Geography", "id": "3"}} http://127.0.0.1:5000/quizzes` 
+
+```
+
+  "question": {
+    "answer": "Agra", 
+    "category": 3, 
+    "difficulty": 2, 
+    "id": 15, 
+    "question": "The Taj Mahal is located in which Indian city?"
+  }, 
+  "success": true
+}
 ```
 
 ## Author and Acknowledgements
