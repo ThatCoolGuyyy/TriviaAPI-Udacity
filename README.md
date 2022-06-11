@@ -11,7 +11,7 @@ This trivia project allows a user to play a trivia game to test their knowledge 
 
 ## Getting Started
 ### Install Dependencies
-Dependencies for this project include pip, Python, Npm and Node.js.
+Dependencies for this project include Pip, Python, Npm and Node.js.
 ### Frontend Dependencies
 Find and download Node and Npm using this [link](./https://nodejs.com/en/download).
 
