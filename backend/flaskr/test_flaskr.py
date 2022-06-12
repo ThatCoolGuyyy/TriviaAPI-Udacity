@@ -42,6 +42,13 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(data['categories'])
 
+    def test_404_get_categories(self):
+        res = self.client().get('/categorie')
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 404)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'resource not found')
 
     def test_get_questions(self):
         res = self.client().get('/questions')
@@ -99,6 +106,14 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
         self.assertTrue(data['created'])
+    
+    def test_404_when_adding_new_question(self):
+        res = self.client().post('/questions', json = {})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 422)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'unprocessable')
 
     def test_search_questions(self):
         search_term = {'searchTerm': 'Who'}
@@ -139,8 +154,26 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['message'], 'resource not found')
 
-   
+    def test_get_quizzes(self):
+        quiz_round = {
+            'previous_questions':[2, 6],
+            'quiz_category': {
+                'id': 4,
+                'type': 'Art'
+            }
+        }
+        response = self.client().post('/quizzes', json=quiz_round)
+        data = json.loads(response.data)
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(data['success'], True)
 
+    def test_422_get_quizzes(self):
+        response = self.client().post('/quizzes', json={})
+        data = json.loads(response.data)
+
+        self.assertEqual(response.status_code, 422)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], 'unprocessable')
     
 
 # Make the tests conveniently executable

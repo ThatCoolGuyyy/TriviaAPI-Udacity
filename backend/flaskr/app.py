@@ -33,7 +33,9 @@ def create_app(test_config=None):
     @app.route('/categories', methods=['GET'])
     def get_categories():
         category = Category.query.all()
-
+        
+        if category is None:
+            abort(404)
         return jsonify({
             'success': True,
             'categories': {category.id: category.type for category in category}
@@ -78,6 +80,8 @@ def create_app(test_config=None):
         new_category = body.get('category')
         new_difficulty = body.get('difficulty')
 
+        if new_question is None or new_answer is None or new_category is None or new_difficulty is None:
+            abort(422)
         try:
             category = Category.query.all()
             question = Question(question=new_question, answer=new_answer, category=new_category, difficulty=new_difficulty)
@@ -128,7 +132,8 @@ def create_app(test_config=None):
         body = request.get_json()
         previousQuestion = body.get('previous_questions')
         category = body.get('quiz_category')
-
+        if previousQuestion is None or category is None:
+            abort(422)
         if (category['id'] == 0):
             questions = Question.query.all()
         else:
